@@ -1,5 +1,5 @@
 ui_print(" ");
-ui_print(">> hijack-ramdisk for Xperia huashan 4.3");
+ui_print(">> hijack-ramdisk for Xperia yuga 5.1.1");
 ui_print(" ");
 ui_print(">> Mounting partitions");
 	run_program("/sbin/mount", "/system");
@@ -16,7 +16,7 @@ ui_print(">> Installing hijack-ramdisk");
 ui_print(" ");
 ui_print(">> Setting Permissions");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/bin/hijack");
-set_perm(0, 2000, 0755, "/system/bin/wipedata");
+set_perm(0, 2000, 0755, "/system/bin/taimport");
 ui_print(" ");
 ui_print(">> Unmounting partitions");
 	run_program("/sbin/umount", "/system");

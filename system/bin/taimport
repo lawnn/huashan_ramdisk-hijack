@@ -25,11 +25,12 @@
 #
 # 17/11/14 154@2ch - modified to work on Xperia TX 4.3 with CM12 ramdisk
 #
-# 05/12/15 154@2ch - modified to work on Xperia SP 4.3 with CM12.1 ramdisk
+# 10/01/16 154@2ch - modified to work on Xperia Z 5.1.1 with CM12.1 ramdisk
 #
 
 set +x
 export PATH=/system/xbin:/system/bin:/sbin/:bin
+insmod /system/lib/modules/byeselinux.ko
 mount -o remount,rw /
 insmod /system/lib/modules/wlan.ko
 insmod /system/lib/modules/cfg80211.ko

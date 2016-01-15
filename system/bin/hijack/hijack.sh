@@ -4,9 +4,9 @@ set +x
 _PATH="$PATH"
 export PATH="/temp:/system/xbin:/system/bin:/sbin"
 
-LED_RED="/sys/class/leds/pwr-red/brightness"
-LED_BLUE="/sys/class/leds/pwr-blue/brightness"
-LED_GREEN="/sys/class/leds/pwr-green/brightness"
+LED_RED="/sys/class/leds/lm3533-red/brightness"
+LED_BLUE="/sys/class/leds/lm3533-blue/brightness"
+LED_GREEN="/sys/class/leds/lm3533-green/brightness"
 
 
 boot_recovery (){
@@ -47,6 +47,9 @@ boot_rom () {
 
 	# Stop services
 	ps a > /temp/log/pre_ps.txt
+	#ps a > /dev/kmsg
+	#mount > /dev/kmsg
+	ls -laR /temp > /dev/kmsg
 
 	for SVCNAME in $(getprop | grep -E '^\[init\.svc\..*\]: \[running\]' | sed 's/\[init\.svc\.\(.*\)\]:.*/\1/g;')
 	do
@@ -70,32 +73,48 @@ boot_rom () {
 	kill -9 $(ps | grep iddd | grep -v "grep" | awk -F' ' '{print $1}')
 
 	ps a > /temp/log/post_ps.txt
+	#ps a > /dev/kmsg
 
 	# umount
 	mount > /temp/log/pre_umount.txt
 
+	umount -l /system/odex
+	umount -l /system/odex.app.sqsh
+	umount -l /system/odex.priv-app.sqsh
+	umount -l /system/odex.app
+	umount -l /dev/block/loop0
+	umount -l /system/odex.priv-app
+	umount -l /dev/block/loop1
+
 	## /boot/modem_fs1
-	#umount -l /dev/block/mmcblk0p6
 	umount -l /dev/block/platform/msm_sdcc.1/by-name/modemst1
+	umount -l /dev/block/mmcblk0p18
+	umount -l /dev/block/platform/msm_sdcc.1/by-name/m9kefs1
 	## /boot/modem_fs2
-	#umount -l /dev/block/mmcblk0p7
 	umount -l /dev/block/platform/msm_sdcc.1/by-name/modemst2
+	umount -l /dev/block/mmcblk0p19
+	umount -l /dev/block/platform/msm_sdcc.1/by-name/m9kefs2
+	## /boot/modem_fsg
+	umount -l /dev/block/mmcblk0p20
+	umount -l /dev/block/platform/msm_sdcc.1/by-name/m9kefs3
 	## /system
-	umount -l /dev/block/mmcblk0p13
-	umount -l /dev/block/platform/msm_sdcc.1/by-name/System
+	umount -l /dev/block/mmcblk0p24
+	umount -l /dev/block/platform/msm_sdcc.1/by-name/system
 	## /data
-	umount -l /dev/block/mmcblk0p15
-	umount -l /dev/block/platform/msm_sdcc.1/by-name/Userdata
+	umount -l /dev/block/mmcblk0p26
+	umount -l /dev/block/platform/msm_sdcc.1/by-name/userdata
 	## /mnt/idd
-	umount -l /dev/block/mmcblk0p10
+	#umount -l /dev/block/mmcblk0p10
 	## /cache
-	umount -l /dev/block/mmcblk0p14
-	umount -l /dev/block/platform/msm_sdcc.1/by-name/Cache
+	umount -l /dev/block/mmcblk0p25
+	umount -l /dev/block/platform/msm_sdcc.1/by-name/cache
 	## /lta-label
-	#umount -l /dev/block/mmcblk0p12
+	umount -l /dev/block/mmcblk0p16
 	## /sdcard (External)
 	#umount -l /dev/block/mmcblk1p15
-	umount -l /dev/block/platform/msm_sdcc.1/by-name/SDCard
+	#umount -l /dev/block/platform/msm_sdcc.1/by-name/SDCard
+
+	umount -l /dev/block/mmcblk0p22
 
 	sync
 
@@ -104,6 +123,7 @@ boot_rom () {
 	umount -l /data/idd
 	umount -l /cache
 	umount -l /lta-label
+	umount -l /persist
 	umount -l /etc
 	umount -l /data/tombstones
 	umount -l /tombstones
@@ -112,19 +132,19 @@ boot_rom () {
 	umount -l /data
 
 	## SDcard
-	# Internal SDcard mountpoint
+	# Internal SDcard umountpoint
 	umount -l /sdcard
 	umount -l /mnt/sdcard
 	umount -l /mnt/int_storage
 	umount -l /storage/sdcard0
 
-	# External SDcard mountpoint
+	# External SDcard umountpoint
 	umount -l /sdcard1
 	umount -l /ext_card
 	umount -l /storage/sdcard1
 	umount -l /devices/platform/msm_sdcc.3/mmc_host
 
-	# External USB mountpoint
+	# External USB umountpoint
 	umount -l /mnt/usbdisk
 	umount -l /usbdisk
 	umount -l /storage/usbdisk
@@ -157,8 +177,10 @@ boot_rom () {
 	umount -l /dev/cpuctl
 	umount -l /dev/pts
 	umount -l /dev/socket
+	umount -l /dev/fuse
 	umount -l /tmp
 	umount -l /dev
+	umount -l /sys/fs/cgroup
 	umount -l /sys/fs/selinux
 	umount -l /sys/kernel/debug
 	umount -l /d
@@ -168,6 +190,7 @@ boot_rom () {
 	sync
 
 	mount > /temp/log/post_umount.txt
+	#/temp/busybox mount > /dev/kmsg
 
 	# clean /
 	cd /
@@ -176,7 +199,9 @@ boot_rom () {
 	rm -r /mnt
 	rm -f sdcard sdcard1 ext_card init*
 
+	/temp/busybox echo "======= Hijack: ls =======" > /dev/kmsg
 	ls -laR > /temp/log/post_clean_ls.txt
+	#/temp/busybox ls -laR > /dev/kmsg
 }
 
 for EVENTDEV in $(ls /dev/input/event*)
@@ -223,7 +248,7 @@ then
 	# Return path variable to default
 	export PATH="${_PATH}"
 	sleep 1
-	exec /system/bin/wipedata.orig
+	exec /system/bin/taimport.orig
 else
     echo "======= Hijack: boot ramdisk =======" > /dev/kmsg
 	touch /temp/hijacked

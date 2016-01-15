@@ -3,10 +3,10 @@
 busybox mount /system
 busybox mount /data
 
-if [ -f /system/bin/wipedata.orig ]; 
+if [ -f /system/bin/taimport.orig ]; 
   then
-    rm -rf /system/bin/wipedata
-    cp /system/bin/wipedata.orig /system/bin/wipedata
+    rm -rf /system/bin/taimport
+    cp /system/bin/taimport.orig /system/bin/taimport
   else
-    cp /system/bin/wipedata /system/bin/wipedata.orig
+    cp /system/bin/taimport /system/bin/taimport.orig
 fi

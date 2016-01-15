@@ -6,10 +6,17 @@ ro.secure=0
 ro.allow.mock.location=0
 ro.debuggable=1
 ro.zygote=zygote32
-ro.enable_boot_charger_mode=1
-persist.sys.usb.config=mtp
+rild.libpath=/system/lib/libril-qc-qmi-1.so
+persist.sys.usb.config=mtp,adb
 dalvik.vm.dex2oat-Xms=64m
 dalvik.vm.dex2oat-Xmx=512m
 dalvik.vm.image-dex2oat-Xms=64m
 dalvik.vm.image-dex2oat-Xmx=64m
 ro.dalvik.vm.native.bridge=0
+#
+# VERSION_PROPERTIES
+#
+ro.semc.version.sw=1269-5309
+ro.semc.version.sw_revision=10.7.A.0.228
+ro.semc.version.sw_variant=GENERIC
+ro.semc.version.sw_type=user
