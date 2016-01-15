@@ -1,0 +1,97 @@
+Signature-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+SHA1-Digest-Manifest: x52/M/tQhKnxAfrz6hb0A1jD5nw=
+
+Name: system/app/Mail.apk
+SHA1-Digest: LZgRzkdr0qN6PDSpGqBAOkVKH2I=
+
+Name: system/lib/libjni_latinime.so
+SHA1-Digest: Kvkivb9iltzDWSxru3hOhDtjCco=
+
+Name: system/app/HTCCamera.apk
+SHA1-Digest: t/b3+0gKNL0SnmJ0kxXJkBNx9rc=
+
+Name: system/app/HtcContacts.apk
+SHA1-Digest: +gwfLf7fEa3fQA77r2PcAsxkChU=
+
+Name: system/framework/com.htc.resources.apk
+SHA1-Digest: f7UeHzH5ZU6CK1PkQh8/NHUmeKU=
+
+Name: system/app/Calculator.apk
+SHA1-Digest: J7JjS/jzV5aGDpsXWHn8MfV5P6k=
+
+Name: system/app/Rosie.apk
+SHA1-Digest: 0W+RqqNl/mgdNfnHFiJgn0ll36A=
+
+Name: data/app/placeholder
+SHA1-Digest: AeOGrWiLtjv65GfDXVNkinzrQOc=
+
+Name: data/local/bootanimation.zip
+SHA1-Digest: LBDs3s0477ipSr9rS7U5S9NXOxY=
+
+Name: system/app/Gmail.apk
+SHA1-Digest: jB948Q5zxRjQjeJvImN8cKIWC4M=
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: cGtpM4Otl+437NBNqZ7Et+ZnaxY=
+
+Name: system/app/DownloadProvider.apk
+SHA1-Digest: H5vVZlUjYirDT+5ihXZorV2DPoE=
+
+Name: system/app/Mms.apk
+SHA1-Digest: 1OcR2nj72jyjvzTENV7ePa94+jQ=
+
+Name: system/fonts/DroidSans.ttf
+SHA1-Digest: tcmrBydbAsWYOg6E/6cPbk1chq0=
+
+Name: system/app/Browser.apk
+SHA1-Digest: XdMbpfMNUt/j8Rsdqa3eaDQ7IGA=
+
+Name: system/app/SystemUI.apk
+SHA1-Digest: eNB7DZpf/UHaCV3yH/eWLbfCN9U=
+
+Name: system/app/WorldClock.apk
+SHA1-Digest: Myp3DCr9yip2yedT/PIKC9+5I1E=
+
+Name: system/framework/framework-res.apk
+SHA1-Digest: aeFJEJQry81SLr8EOlJEELwvfYo=
+
+Name: system/app/WatchApp.apk
+SHA1-Digest: 7QpX2oeTEd/WvBM6MGImggsjGV8=
+
+Name: system/app/HtcListen.apk
+SHA1-Digest: m50A5QBSXVw4qtXrDZsM5NauPZc=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: bgbIMYDdOmTgqY3FnKD5cRyGkrw=
+
+Name: system/app/HtcDialer.apk
+SHA1-Digest: EuSAKcPQm+vLOHSuZwlOvmAS+Pc=
+
+Name: system/fonts/Clockopia.ttf
+SHA1-Digest: fpkYlXuEcWNUJtilMt3bMGfQgzI=
+
+Name: system/customize/resource/downanimation.zip
+SHA1-Digest: riKZn/0dc9qX/u4f9ZpQTmVuufY=
+
+Name: system/app/Talk2.apk
+SHA1-Digest: 9sqytRcX+QIJzIru7snT0GlDVMw=
+
+Name: system/fonts/DroidSans-Bold.ttf
+SHA1-Digest: 5C/vdr035J3BiWOIaupzTCowH2A=
+
+Name: system/customize/resource/bootanimation.zip
+SHA1-Digest: EF36V1GnbIWyxgil5jnudJ4ox0Y=
+
+Name: system/app/Settings.apk
+SHA1-Digest: xCq2JYSIRiR7NUlDUG6gjZ+AN4M=
+
+Name: system/app/LatinIME.apk
+SHA1-Digest: G6YgfEO6c8j9fiROgObGFnyXCGs=
+
+Name: system/app/Calendar.apk
+SHA1-Digest: n3fuBEWj6mi3P7V2JfYl98Dlung=
+
+Name: system/app/HTCAlbum.apk
+SHA1-Digest: mxqqgoaqd2WQfSma4LcS3sKbLpg=
+
